@@ -1,0 +1,31 @@
+﻿@page
+@model PdfModel
+@{
+    ViewData["Title"] = "PDF: " + Model.Product.Name;
+}
+
+<div class="container">
+    <h1 class="display-4">PDF: @Model.Product.Name</h1>
+
+    <div class="row">
+        @*@foreach (var product in Model.Products)
+            {
+            <div class="col">
+                <div class="card">
+                    @if (product.HasImageUrl)
+                    {
+                        <img src="~/images/@product.ImageUrl" class="card-img-top" alt="@product.Name" />
+                    }
+                    <div class="card-body">
+                        <h2 class="card-title">@product.Name</h2>
+                        <p class="card-text">@product.Description</p>
+                        <a class="btn btn-primary" asp-area="" asp-page="/Pdf" asp-fragment="@product.Id">View as PDF</a>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">$@product.Price</li>
+                    </ul>
+                </div>
+            </div>
+            }*@
+    </div>
+</div>
