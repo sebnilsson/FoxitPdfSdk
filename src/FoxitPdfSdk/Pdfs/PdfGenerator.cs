@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading;
 using foxit.common;
 using foxit.common.fxcrt;
 using foxit.pdf;
