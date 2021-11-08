@@ -47,8 +47,7 @@ namespace FoxitPdfSdk.Pdfs
         {
             var rect = new RectF(50f, 600f - offset, 500f, 640f - offset);
 
-            using var control =
-                form.AddControl(page, title, Field.Type.e_TypeTextField, rect);
+            using var control = form.AddControl(page, title, Field.Type.e_TypeTextField, rect);
 
             using var field = control.GetField();
 
@@ -59,6 +58,7 @@ namespace FoxitPdfSdk.Pdfs
         {
             var tempPath = Path.GetTempPath();
             var tempName = Path.ChangeExtension(Path.GetTempFileName(), "pdf");
+
             return Path.Combine(tempPath, tempName);
         }
 
