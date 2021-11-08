@@ -1,4 +1,5 @@
-﻿using FoxitPdfSdk.Products;
+﻿using FoxitPdfSdk.Pdfs;
+using FoxitPdfSdk.Products;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -7,11 +8,13 @@ namespace FoxitPdfSdk.WebApp.Pages
 {
     public class PdfModel : PageModel
     {
+        private readonly IPdfGenerator _pdfGenerator;
         private readonly IProductService _productService;
         private readonly ILogger<PdfModel> _logger;
 
-        public PdfModel(IProductService productService, ILogger<PdfModel> logger)
+        public PdfModel(IProductService productService, IPdfGenerator pdfGenerator, ILogger<PdfModel> logger)
         {
+            _pdfGenerator = pdfGenerator;
             _productService = productService;
             _logger = logger;
         }
@@ -24,11 +27,9 @@ namespace FoxitPdfSdk.WebApp.Pages
                 return NotFound();
             }
 
-            Product = product;
+            var pdfStream = _pdfGenerator.GenerateForProduct(product);
 
-            return Page();
+            return new FileStreamResult(pdfStream, "application/pdf");
         }
-
-        public Product Product { get; private set; } = null!;
     }
 }
