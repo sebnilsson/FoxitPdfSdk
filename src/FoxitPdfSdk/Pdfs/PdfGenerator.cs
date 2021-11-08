@@ -29,9 +29,9 @@ namespace FoxitPdfSdk.Pdfs
             using var page = doc.InsertPage(0, PDFPage.Size.e_SizeLetter);
 
             AddProductFields(product, form, page);
-            Thread.Sleep(2000);
+
             page.Flatten(true, (int)PDFPage.FlattenOptions.e_FlattenAll);
-            Thread.Sleep(2000);
+
             return GetPdfStream(doc);
         }
 
